@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subnet Calculator | NetworkAcademy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="logo" href="../index.html">
+          <span class="logo-mark">NA</span>
+          <span>NetworkAcademy</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Navigation principale">
+          <a href="../index.html">Accueil</a>
+          <a href="subnet-calculator.html" class="active">Outils</a>
+          <a href="../courses/osi-model.html">Cours</a>
+          <a href="../resources/youtube-playlists.html">Ressources</a>
+        </nav>
+
+        <div class="header-actions">
+          <button type="button" class="btn btn-secondary" data-theme-toggle aria-label="Changer de thème">
+            Thème
+          </button>
+          <a class="btn btn-primary" href="#subnet-form">Calculer</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <h1>Calculateur de Sous-Réseaux IP</h1>
+        <p>
+          Entrez une IP et un masque CIDR pour obtenir instantanément les informations clés de votre
+          sous-réseau.
+        </p>
+
+        <div class="subnet-layout fade-in">
+          <section class="form-card" aria-labelledby="subnet-form-title">
+            <h2 id="subnet-form-title">Paramètres</h2>
+            <form id="subnet-form" novalidate>
+              <div class="form-row">
+                <label for="ipAddress">Adresse IP (IPv4)</label>
+                <input
+                  type="text"
+                  id="ipAddress"
+                  name="ipAddress"
+                  placeholder="Ex: 192.168.1.0"
+                  inputmode="decimal"
+                  required
+                />
+              </div>
+
+              <div class="form-row">
+                <label for="cidrMask">Masque CIDR <span id="cidrDisplay">/24</span></label>
+                <input type="range" id="cidrMask" name="cidrMask" min="1" max="32" value="24" />
+              </div>
+
+              <div class="inline">
+                <button type="submit" class="btn btn-primary">Calculer</button>
+                <button type="button" id="resetSubnet" class="btn btn-secondary">Réinitialiser</button>
+              </div>
+              <p id="subnetLoading" hidden>Calcul en cours...</p>
+            </form>
+          </section>
+
+          <section class="results-card" aria-labelledby="subnet-results-title">
+            <h2 id="subnet-results-title">Résultats</h2>
+            <div class="result-list">
+              <div class="result-item"><strong>Network ID</strong><span id="networkId">-</span></div>
+              <div class="result-item"><strong>Broadcast Address</strong><span id="broadcastAddress">-</span></div>
+              <div class="result-item"><strong>Premier hôte utilisable</strong><span id="firstHost">-</span></div>
+              <div class="result-item"><strong>Dernier hôte utilisable</strong><span id="lastHost">-</span></div>
+              <div class="result-item"><strong>Nombre total d'hôtes</strong><span id="totalHosts">-</span></div>
+              <div class="result-item"><strong>Masque de sous-réseau</strong><span id="subnetMask">-</span></div>
+              <div class="result-item"><strong>Masque wildcard</strong><span id="wildcardMask">-</span></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© 2024 NetworkAcademy - Développé par TonNom</div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/subnet-calculator.js"></script>
+  </body>
+</html>
